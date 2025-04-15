@@ -1,26 +1,23 @@
-import Home from "./components/Home"
-import Projects from './components/Projects';
-import About from './components/About';
-import Contact from './components/Contact';
+import { Route, Routes } from "react-router";
+import DefaultLayout from "./layouts/DefaultLayout";
+import Homepage from "./routes/Homepage";
+import About from "./routes/About";
+import Projects from "./routes/Projects";
+import Contact from "./routes/Contact";
 
 
 function App() {
- 
-
   return (
-    <>
-
-
-
-    <Home />
-    <Projects/>
-    <About />
-    <Contact/>
-
-    
- 
-    </>
-  )
+    <Routes>
+      <Route element={<DefaultLayout />}>
+        <Route index element={<Homepage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+       
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;

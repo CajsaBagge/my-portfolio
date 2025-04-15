@@ -1,13 +1,13 @@
+
 export default function Contact() {
   return (
-    <section className="bg-white py-16 px-4">
+    <section className=" py-16 px-4">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Kontakta mig</h2>
-        <p className="text-lg mb-8 text-gray-700">
+        <p className="text-lg mb-8">
           Har du frågor, eller vill du bara säga hej? Tveka inte att höra av dig!
         </p>
-
-        <div className="space-y-4 text-lg text-gray-800">
+        <div className="space-y-4 text-lg">
           <p>
             📧 <span className="font-semibold">E-post:</span>{" "}
             <a href="mailto:cajsabagge@hotmail.com" className="text-blue-600 hover:underline">
