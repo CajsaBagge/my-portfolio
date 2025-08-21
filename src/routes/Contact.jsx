@@ -1,4 +1,5 @@
 
+
 export default function Contact() {
   return (
     <section className=" py-16 px-4">
@@ -40,3 +41,4 @@ export default function Contact() {
     </section>
   );
 }
+

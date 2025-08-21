@@ -1,38 +1,76 @@
-import { Outlet, Link } from "react-router";
+import { Outlet, NavLink } from "react-router-dom";
 import { useState } from "react";
 
 export default function DefaultLayout() {
-
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   return (
-    <div
-      className="min-h-screen bg-cover bg-center text-white"
-      style={{
-        backgroundImage: "url('/your-background.jpg')",
-      }}
-    >
-      <header className="flex flex-col justify-between items-center p-4 border-2 sm:items-start  border-purple-600">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-orange-50 to-orange-100">
+      {/* Navbar */}
+      <header className="relative flex justify-between items-center p-4 border-b shadow-md bg-white">
+        {/* Logo / Namn */}
+        <h1 className="text-xl font-bold text-orange-600">C</h1>
 
-        <button className="sm:hidden self-start mb-2"
-          onClick={() => setMenuOpen(!menuOpen)}>
+        {/* Hamburger (endast mobil) */}
+        <button
+          className="sm:hidden p-2 rounded hover:bg-orange-100"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Öppna meny"
+        >
           ☰
         </button>
-        <nav className={`${menuOpen ? "flex" : "hidden"
-          } sm:flex flex-col sm:flex-row gap-4 sm:gap-10`}>
-          <Link to="/" className="hover:underline">Hem</Link>
-          <Link to="/about" className="hover:underline">Om mig</Link>
-          <Link to="/projects" className="hover:underline">Projekt</Link>
-          <Link to="/contact" className="hover:underline">Kontakt</Link>
+
+        {/* Navigation */}
+        <nav
+          className={`${
+            menuOpen ? "flex" : "hidden"
+          } sm:flex flex-col sm:flex-row gap-4 sm:gap-8 absolute sm:static top-16 left-0 w-full sm:w-auto bg-white sm:bg-transparent p-4 sm:p-0 z-50`}
+        >
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? "text-orange-600 font-semibold" : "hover:text-orange-600"
+            }
+          >
+            Hem
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "text-orange-600 font-semibold" : "hover:text-orange-600"
+            }
+          >
+            Om mig
+          </NavLink>
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              isActive ? "text-orange-600 font-semibold" : "hover:text-orange-600"
+            }
+          >
+            Projekt
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "text-orange-600 font-semibold" : "hover:text-orange-600"
+            }
+          >
+            Kontakt
+          </NavLink>
         </nav>
       </header>
 
-      <main >
+      {/* Här laddas respektive sida */}
+      <main className="flex-grow">
         <Outlet />
       </main>
 
-
+      {/* Footer */}
+      <footer className="bg-orange-600 text-white text-center py-4">
+        © {new Date().getFullYear()} Cajsa Bagge - Portfolio
+      </footer>
     </div>
   );
 }
